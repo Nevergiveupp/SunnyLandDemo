@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Collections
+  - Enemies
+  - DeadLine
+  - null
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2477981003
+    locked: 0
+  - name: Environment
+    uniqueID: 529245883
+    locked: 0
+  - name: Player
+    uniqueID: 2290339647
+    locked: 0
+  - name: Foreground
+    uniqueID: 963753545
+    locked: 0
+  - name: Ground
+    uniqueID: 1838519823
+    locked: 0
