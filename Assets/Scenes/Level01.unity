@@ -1851,11 +1851,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &955211128 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8157150236680319886, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-  m_PrefabInstance: {fileID: 5184137708416554789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1107695710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5900,30 +5895,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 949110608, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 253935cdef7a3ca4a841e0fc4af8ea25, type: 2}
-    - target: {fileID: 1947932764736063342, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 253935cdef7a3ca4a841e0fc4af8ea25, type: 2}
-    - target: {fileID: 3758183148758135289, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3758183148758135289, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 253935cdef7a3ca4a841e0fc4af8ea25, type: 2}
-    - target: {fileID: 4476883286190579582, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4476883286190579582, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 253935cdef7a3ca4a841e0fc4af8ea25, type: 2}
     - target: {fileID: 5184137706825159017, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5976,14 +5947,6 @@ PrefabInstance:
       propertyPath: cherryNum
       value: 
       objectReference: {fileID: 1107695712}
-    - target: {fileID: 5184137706825159028, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: jumpForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5184137706825159028, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 955211128}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
 --- !u!1001 &8166984320683589620
