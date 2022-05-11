@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
     // 上半身碰撞体（下蹲时关闭）
     public Collider2D disColl;
 
-    // 头顶检查点
-    public Transform cellingCheck;
+    // 头顶/地面检查点
+    public Transform cellingCheck, groundCheck;
 
     [Tooltip("Jump Audio")]
     public AudioSource jumpAudio;
@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
     // 人物是否受伤，默认false
     private bool isHurt;
 
+    // 是否在地面，默认false
+    private bool isGround;
+    // 额外跳跃值，默认0
+    private int extraJump;
+
 
     // Start is called before the first frame update
     void Start()
@@ -70,16 +75,19 @@ public class PlayerController : MonoBehaviour
         }
         // 如果受伤，直接执行切换动画
         SwitchAnim();
+        // 检测每一帧角色是否在地面
+        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, ground);
     }
 
     // Update is called once per frame
     private void Update()
     {
         // 角色跳跃
-        Jump();
+        //Jump();
         // 角色下蹲
         Crouch();
         cherryNum.text = cherryCount.ToString();
+        newJump();
     }
 
     // 角色移动
@@ -251,7 +259,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 角色跳跃
-    void Jump()
+    /**void Jump()
     {
         // 按住跳跃键且角色接触地面
         if (Input.GetButtonDown("Jump") && coll.IsTouchingLayers(ground))
@@ -260,6 +268,29 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(0, jumpForce);
             // 播放音效
             jumpAudio.Play();
+            anim.SetBool("jumping", true);
+        }
+    }*/
+
+    // 优化跳跃手感
+    void newJump()
+    {
+        if (isGround)
+        {
+            // 二段跳，额外跳1次
+            extraJump = 1;
+        }
+        if (Input.GetButtonDown("Jump") && extraJump > 0)
+        {
+            // 向上跳
+            rb.velocity = Vector2.up * jumpForce;// new Vector2 (0, 1)
+            // 额外跳跃量减一
+            extraJump--;
+            anim.SetBool("jumping", true);
+        }
+        if (Input.GetButtonDown("Jump") && extraJump == 0 && isGround)
+        {
+            rb.velocity = Vector2.up * jumpForce;
             anim.SetBool("jumping", true);
         }
     }
