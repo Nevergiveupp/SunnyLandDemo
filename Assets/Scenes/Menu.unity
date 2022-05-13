@@ -976,6 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4ea1487036fc245a9a5c00b8e7e695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  audioMixer: {fileID: 0}
 --- !u!95 &1221325169
 Animator:
   serializedVersion: 3
