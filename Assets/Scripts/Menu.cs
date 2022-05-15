@@ -25,6 +25,7 @@ public class Menu : MonoBehaviour
     {
         // 启用UI
         GameObject.Find("Canvas/MainMenu/UI").SetActive(true);
+        Debug.Log("UI已启用");
     }
 
     // 暂停游戏

@@ -42,10 +42,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask ground;
 
     [SerializeField]
-    private int cherryCount;
+    private int cherryCount, gemCount;
 
     [SerializeField]
-    private TMP_Text cherryNum;
+    private TMP_Text cherryNum, gemNum;
 
     // 人物是否受伤，默认false
     private bool isHurt;
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
         // 角色下蹲
         Crouch();
         cherryNum.text = cherryCount.ToString();
+        gemNum.text = gemCount.ToString();
         newJump();
     }
 
@@ -184,7 +185,15 @@ public class PlayerController : MonoBehaviour
             // 计数加一
             //cherryCount += 1;
             // 调用碰撞体动画
-            collider.GetComponent<Animator>().Play("IsGot");
+            Debug.Log(collider.name);
+            if (collider.name.Contains("Cherry"))
+            {
+                collider.GetComponent<Animator>().Play("IsGot");
+            }
+            if (collider.name.Contains("Gem"))
+            {
+                collider.GetComponent<Animator>().Play("GemIsGot");
+            }
             //cherryNum.text = cherryCount.ToString();
         }
 
@@ -284,6 +293,8 @@ public class PlayerController : MonoBehaviour
         {
             // 向上跳
             rb.velocity = Vector2.up * jumpForce;// new Vector2 (0, 1)
+            // 播放音效
+            jumpAudio.Play();
             // 额外跳跃量减一
             extraJump--;
             anim.SetBool("jumping", true);
@@ -306,6 +317,12 @@ public class PlayerController : MonoBehaviour
     public void CherryCount()
     {
         cherryCount += 1;
+    }
+
+    // 钻石计数
+    public void GemCount()
+    {
+        gemCount += 1;
     }
 
 
