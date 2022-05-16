@@ -23,14 +23,14 @@ public class PlayerController : MonoBehaviour
     // 头顶/地面检查点
     public Transform cellingCheck, groundCheck;
 
-    [Tooltip("Jump Audio")]
-    public AudioSource jumpAudio;
+    //[Tooltip("Jump Audio")]
+    //public AudioSource jumpAudio;
 
-    [Tooltip("Hurt Audio")]
-    public AudioSource hurtAudio;
+    //[Tooltip("Hurt Audio")]
+    //public AudioSource hurtAudio;
 
-    [Tooltip("Get Item Audio")]
-    public AudioSource getItemAudio;
+    //[Tooltip("Get Item Audio")]
+    //public AudioSource getItemAudio;
 
     [Tooltip("Player Move Speed")]
     public float speed;
@@ -179,7 +179,8 @@ public class PlayerController : MonoBehaviour
             // 解决音效播放两次的问题
             collider.tag = "null";
             // 播放音效
-            getItemAudio.Play();
+            //getItemAudio.Play();
+            SoundManager.instance.GetItemAudio();
             // 销毁当前被碰撞物体
             //Destroy(collider.gameObject);
             // 计数加一
@@ -201,7 +202,7 @@ public class PlayerController : MonoBehaviour
         if (collider.tag == "DeadLine")
         {
             // 禁用所有音源
-            this.GetComponent<AudioSource>().enabled = false;
+            // this.GetComponent<AudioSource>().enabled = false;
             // 延迟执行重置当前场景
             Invoke("Restart", 2f);
 
@@ -232,7 +233,8 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(-4, rb.velocity.y);
                 // 播放音效
-                hurtAudio.Play();
+                //hurtAudio.Play();
+                SoundManager.instance.HurtAudio();
                 // 受伤标记
                 isHurt = true;
             }
@@ -241,7 +243,8 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(4, rb.velocity.y);
                 // 播放音效
-                hurtAudio.Play();
+                //hurtAudio.Play();
+                SoundManager.instance.HurtAudio();
                 // 受伤标记
                 isHurt = true;
             }
@@ -294,14 +297,18 @@ public class PlayerController : MonoBehaviour
             // 向上跳
             rb.velocity = Vector2.up * jumpForce;// new Vector2 (0, 1)
             // 播放音效
-            jumpAudio.Play();
+            //jumpAudio.Play();
             // 额外跳跃量减一
             extraJump--;
+            // 调用声音管理器中的跳跃音效
+            SoundManager.instance.JumpAudio();
             anim.SetBool("jumping", true);
         }
         if (Input.GetButtonDown("Jump") && extraJump == 0 && isGround)
         {
             rb.velocity = Vector2.up * jumpForce;
+            // 调用声音管理器中的跳跃音效
+            SoundManager.instance.JumpAudio();
             anim.SetBool("jumping", true);
         }
     }
