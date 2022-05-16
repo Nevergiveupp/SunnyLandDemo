@@ -332,5 +332,7 @@ public class PlayerController : MonoBehaviour
         gemCount += 1;
     }
 
-
 }
+
+
+
