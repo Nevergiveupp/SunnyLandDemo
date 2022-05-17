@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8157150236680319886}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 5184137706825159030}
   - component: {fileID: 5184137706825159028}
   - component: {fileID: 5184137706825159031}
-  m_Layer: 0
+  - component: {fileID: 159118091}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -106,7 +107,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2004627649
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -179,9 +180,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05641073, y: -0.66282374}
+  m_Offset: {x: -0.11387104, y: -0.7777445}
   serializedVersion: 2
-  m_Radius: 0.33081907
+  m_Radius: 0.33081895
 --- !u!114 &5184137706825159028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
   groundCheck: {fileID: 8157150236680319886}
   speed: 400
   jumpForce: 10
+  climbSpeed: 4
   ground:
     serializedVersion: 2
     m_Bits: 256
@@ -226,6 +228,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &159118091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184137706825159017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e64599c2f7ac684794937d23123fa75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5184137706825159018}
 --- !u!1 &7244032060786427995
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1708489443506931057}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: celling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player Jump Force")]
     public float jumpForce;
 
+    [Tooltip("Player Climb Speed")]
+    public float climbSpeed;
+
     [Tooltip("Layer")]
     public LayerMask ground;
 
@@ -313,6 +316,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
     // 重置当前场景
     void Restart()
     {
@@ -331,7 +336,6 @@ public class PlayerController : MonoBehaviour
     {
         gemCount += 1;
     }
-
 }
 
 

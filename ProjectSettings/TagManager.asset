@@ -8,6 +8,7 @@ TagManager:
   - Enemies
   - DeadLine
   - null
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
+  - Ladder
+  - Player
   - 
   - 
   - 
@@ -51,12 +52,15 @@ TagManager:
   - name: Environment
     uniqueID: 529245883
     locked: 0
+  - name: Ground
+    uniqueID: 1838519823
+    locked: 0
+  - name: Ladder
+    uniqueID: 73051459
+    locked: 0
   - name: Player
     uniqueID: 2290339647
     locked: 0
   - name: Foreground
     uniqueID: 963753545
-    locked: 0
-  - name: Ground
-    uniqueID: 1838519823
     locked: 0
