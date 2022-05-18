@@ -201,7 +201,6 @@ MonoBehaviour:
   groundCheck: {fileID: 8157150236680319886}
   speed: 400
   jumpForce: 12
-  climbSpeed: 100
   ground:
     serializedVersion: 2
     m_Bits: 256

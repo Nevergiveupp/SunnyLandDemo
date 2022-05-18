@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player Jump Force")]
     public float jumpForce;
 
-    [Tooltip("Player Climb Speed")]
-    public float climbSpeed;
+    //[Tooltip("Player Climb Speed")]
+    //public float climbSpeed;
 
     [Tooltip("Layer")]
     public LayerMask ground;

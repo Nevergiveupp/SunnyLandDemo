@@ -6,7 +6,7 @@ public class LadderController : MonoBehaviour
 {
     private float playerGravity;
     private float vertical;
-    private float speed = 4f;
+    private float speed = 6f;
     private bool isLadder;
     private bool isClimbing;
 
