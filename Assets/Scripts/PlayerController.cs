@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour
     // 额外跳跃值，默认0
     private int extraJump;
 
+    [Tooltip("Player MaxHealth")]
+    public int maxHealth = 100;
+    [Tooltip("Player CurrentHealth")]
+    public int currentHealth;
+
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +72,9 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        // 初始化血量
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void FixedUpdate()
@@ -207,7 +216,7 @@ public class PlayerController : MonoBehaviour
             // 禁用所有音源
             // this.GetComponent<AudioSource>().enabled = false;
             // 延迟执行重置当前场景
-            Invoke("Restart", 2f);
+            Invoke("Restart", 1f);
 
         }
     }
@@ -240,6 +249,8 @@ public class PlayerController : MonoBehaviour
                 SoundManager.instance.HurtAudio();
                 // 受伤标记
                 isHurt = true;
+                // 血量减少
+                TakeDamage(25);
             }
             // 如果人物在敌人右侧，受伤弹回右侧
             else if (this.transform.position.x > collision.gameObject.transform.position.x)
@@ -250,6 +261,8 @@ public class PlayerController : MonoBehaviour
                 SoundManager.instance.HurtAudio();
                 // 受伤标记
                 isHurt = true;
+                // 血量减少
+                TakeDamage(25);
             }
         }
         
@@ -335,6 +348,20 @@ public class PlayerController : MonoBehaviour
     public void GemCount()
     {
         gemCount += 1;
+    }
+
+    void TakeDamage(int damage)
+    {
+        // 扣减血量
+        currentHealth -= damage;
+        // 设置血条
+        healthBar.SetHealth(currentHealth);
+        // 死亡
+        if(currentHealth <= 0)
+        {
+            // 重置游戏
+            Invoke("Restart", 0.5f);
+        }
     }
 }
 
