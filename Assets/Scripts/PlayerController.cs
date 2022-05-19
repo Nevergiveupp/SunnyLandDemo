@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     public HealthBar healthBar;
 
+    private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+
     // Start is called before the first frame update
     void Start()
     {
@@ -111,19 +113,35 @@ public class PlayerController : MonoBehaviour
         // 角色面朝方向
         float faceDirection = Input.GetAxisRaw("Horizontal");
 
+        float move = horizontalValue * speed * Time.fixedDeltaTime;
+
         // 角色移动
         if (horizontalValue != 0)
         {
             // 设置角色速度
-            rb.velocity = new Vector2(horizontalValue * speed * Time.fixedDeltaTime, rb.velocity.y); // 注意：FixUpdate()方法中使用Time.fixedDeltaTime可以使画面更流畅
+            rb.velocity = new Vector2(move, rb.velocity.y); // 注意：FixUpdate()方法中使用Time.fixedDeltaTime可以使画面更流畅
             // 设置动画参数
             anim.SetFloat("running", Mathf.Abs(faceDirection));
         }
 
         // 角色朝向
-        if (faceDirection != 0)
+        //if (faceDirection != 0)
+        //{
+        //    this.transform.localScale = new Vector3(faceDirection, 1, 1);
+        //}
+
+        // 这样转向可以翻转x轴，解决子弹发射一直向右的问题
+        // If the input is moving the player right and the player is facing left...
+        if (move > 0 && !m_FacingRight)
         {
-            this.transform.localScale = new Vector3(faceDirection, 1, 1);
+            // ... flip the player.
+            Flip();
+        }
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if (move < 0 && m_FacingRight)
+        {
+            // ... flip the player.
+            Flip();
         }
 
     }
@@ -362,6 +380,18 @@ public class PlayerController : MonoBehaviour
             // 重置游戏
             Invoke("Restart", 0.5f);
         }
+    }
+
+    private void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        m_FacingRight = !m_FacingRight;
+
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
+        transform.localScale = flipped;
+
+        transform.Rotate(0f, 180f, 0f);
     }
 }
 
