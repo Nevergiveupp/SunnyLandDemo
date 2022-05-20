@@ -657,6 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   deathEffect: {fileID: 1755349173569476, guid: 3c45864be6a059a4a82a25e285298338, type: 3}
+  bossSword: {fileID: 0}
+  passMenu: {fileID: 0}
   isInvulnerable: 0
 --- !u!114 &7388109881952667083
 MonoBehaviour:

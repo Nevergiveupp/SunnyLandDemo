@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Player Animator")]
     private Animator anim;
 
-    // 下半身碰撞体
+    // 生效碰撞体
     [Tooltip("Player Collider")]
     public Collider2D coll;
 
-    // 上半身碰撞体（下蹲时关闭）
-    public Collider2D disColl;
+    // 头部碰撞体
+    public Collider2D headColl;
+    // 下蹲碰撞体
+    public Collider2D crouchColl;
 
     // 头顶/地面检查点
     public Transform cellingCheck, groundCheck;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Layer")]
     public LayerMask ground;
+    public LayerMask ladder;
 
     [SerializeField]
     private int cherryCount, gemCount;
@@ -67,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
+    public GameObject passMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +79,9 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        // 获取收集数
+        cherryCount = PlayerPrefs.GetInt("cherryCount");
+        gemCount = PlayerPrefs.GetInt("gemCount");
         // 初始化血量
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -89,8 +97,8 @@ public class PlayerController : MonoBehaviour
         }
         // 如果受伤，直接执行切换动画
         SwitchAnim();
-        // 检测每一帧角色是否在地面
-        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, ground);
+        // 检测每一帧角色是否在地面或梯子上
+        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, ground) || Physics2D.OverlapCircle(groundCheck.position, 0.2f, ladder);
     }
 
     // Update is called once per frame
@@ -100,6 +108,8 @@ public class PlayerController : MonoBehaviour
         //Jump();
         // 角色下蹲
         Crouch();
+        PlayerPrefs.SetInt("cherryCount", cherryCount);
+        PlayerPrefs.SetInt("gemCount", gemCount);
         cherryNum.text = cherryCount.ToString();
         gemNum.text = gemCount.ToString();
         newJump();
@@ -191,7 +201,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 如果角色接触地面
-        else if (coll.IsTouchingLayers(ground))
+        else if (coll.IsTouchingLayers(ground) || coll.IsTouchingLayers(ladder))
         {
             // 设置动画为闲置
             anim.SetBool("falling", false);
@@ -236,6 +246,12 @@ public class PlayerController : MonoBehaviour
             // 延迟执行重置当前场景
             Invoke("Restart", 1f);
 
+        }
+
+        if (collider.tag == "Finish")
+        {
+            GamePass();
+            ClearCollectionNum();
         }
     }
 
@@ -289,17 +305,18 @@ public class PlayerController : MonoBehaviour
     // 下蹲
     void Crouch()
     {
-        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.2f, ground))
+        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.5f, ground))
         {
             if (Input.GetButton("Crouch"))
             {
                 anim.SetBool("crouching", true);
-                disColl.enabled = false;
+                headColl.enabled = false;
             }
             else
             {
                 anim.SetBool("crouching", false);
-                disColl.enabled = true;
+                headColl.enabled = true;
+                
             }
         }
     }
@@ -368,7 +385,7 @@ public class PlayerController : MonoBehaviour
         gemCount += 1;
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         // 扣减血量
         currentHealth -= damage;
@@ -378,7 +395,7 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0)
         {
             // 重置游戏
-            Invoke("Restart", 0.5f);
+            Invoke("Restart", 1f);
         }
     }
 
@@ -392,6 +409,21 @@ public class PlayerController : MonoBehaviour
         transform.localScale = flipped;
 
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    void GamePass()
+    {
+        // 弹出通关对话框，时间停止
+        passMenu.SetActive(true);
+        Time.timeScale = 0f;
+
+    }
+
+    // 收集数清零
+    void ClearCollectionNum()
+    {
+        PlayerPrefs.SetInt("cherryCount", 0);
+        PlayerPrefs.SetInt("gemCount", 0);
     }
 }
 

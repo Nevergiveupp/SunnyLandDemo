@@ -50,5 +50,10 @@ public class Menu : MonoBehaviour
         audioMixer.SetFloat("MainVolume", value);
     }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+
+    }
 
 }

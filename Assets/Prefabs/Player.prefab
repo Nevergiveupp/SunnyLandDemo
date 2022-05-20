@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &655318284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 655318285}
+  m_Layer: 10
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &655318285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655318284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.65, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5184137706825159019}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &261123964746548183
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +71,7 @@ GameObject:
   - component: {fileID: 5184137706825159019}
   - component: {fileID: 5184137706825159016}
   - component: {fileID: 5184137706825159018}
-  - component: {fileID: 5184137706825159029}
+  - component: {fileID: 9024886401302208752}
   - component: {fileID: 5184137706825159030}
   - component: {fileID: 5184137706825159028}
   - component: {fileID: 5184137706825159031}
@@ -66,6 +96,7 @@ Transform:
   m_Children:
   - {fileID: 1708489443506931057}
   - {fileID: 8157150236680319886}
+  - {fileID: 655318285}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,7 +172,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &5184137706825159029
+--- !u!61 &9024886401302208752
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034349084, y: -0.12653565}
+  m_Offset: {x: 0.030621529, y: -0.024701595}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -165,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.84688735, y: 0.7127359}
+  m_Size: {x: 0.9608898, y: 0.77181435}
   m_EdgeRadius: 0
 --- !u!58 &5184137706825159030
 CircleCollider2D:
@@ -180,9 +211,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11387104, y: -0.7777445}
+  m_Offset: {x: -0.008774579, y: -0.5412767}
   serializedVersion: 2
-  m_Radius: 0.33081895
+  m_Radius: 0.44467354
 --- !u!114 &5184137706825159028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coll: {fileID: 5184137706825159030}
-  disColl: {fileID: 5184137706825159029}
+  headColl: {fileID: 9024886401302208752}
+  crouchColl: {fileID: 5184137706825159030}
   cellingCheck: {fileID: 1708489443506931057}
   groundCheck: {fileID: 8157150236680319886}
   speed: 400
@@ -204,10 +236,16 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 256
+  ladder:
+    serializedVersion: 2
+    m_Bits: 512
   cherryCount: 0
   gemCount: 0
   cherryNum: {fileID: 0}
   gemNum: {fileID: 0}
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!95 &5184137706825159031
 Animator:
   serializedVersion: 3

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class BossHealth : MonoBehaviour
 
 	public GameObject deathEffect;
 
+	public GameObject bossSword;
+
+	
+
 	public bool isInvulnerable = false;
 
 	public void TakeDamage(int damage)
@@ -18,7 +23,7 @@ public class BossHealth : MonoBehaviour
 
 		health -= damage;
 
-		if (health <= 200)
+		if (health <= 250)
 		{
 			GetComponent<Animator>().SetBool("IsEnraged", true);
 		}
@@ -32,6 +37,8 @@ public class BossHealth : MonoBehaviour
 	void Die()
 	{
 		Instantiate(deathEffect, transform.position, Quaternion.identity);
+		// µÙ¬‰“ª∞—Ω£
+		Instantiate(bossSword, transform.position, Quaternion.identity).SetActive(true);
 		Destroy(gameObject);
 	}
 
