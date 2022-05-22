@@ -9,6 +9,7 @@ TagManager:
   - DeadLine
   - null
   - Ladder
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Player
   - Boss
   - CameraArea
-  - 
-  - 
+  - FireBall
+  - Item
   - 
   - 
   - 

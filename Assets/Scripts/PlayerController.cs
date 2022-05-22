@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask ladder;
 
     [SerializeField]
-    private int cherryCount, gemCount;
+    public int cherryCount, gemCount;
 
     [SerializeField]
     private TMP_Text cherryNum, gemNum;
@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject passMenu;
 
+    public bool isOnFire = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,12 +81,14 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        // 获取收集数
-        cherryCount = PlayerPrefs.GetInt("cherryCount");
-        gemCount = PlayerPrefs.GetInt("gemCount");
+        // 从上一个场景继承收集数和血量
+        //Dictionary<string, int> param = SceneMgr.ins.ReadSceneData();
+        //cherryCount = param["cherryCount"];
+        //gemCount = param["gemCount"];
         // 初始化血量
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        
     }
 
     void FixedUpdate()
@@ -108,8 +112,6 @@ public class PlayerController : MonoBehaviour
         //Jump();
         // 角色下蹲
         Crouch();
-        PlayerPrefs.SetInt("cherryCount", cherryCount);
-        PlayerPrefs.SetInt("gemCount", gemCount);
         cherryNum.text = cherryCount.ToString();
         gemNum.text = gemCount.ToString();
         newJump();
@@ -252,6 +254,14 @@ public class PlayerController : MonoBehaviour
         {
             GamePass();
             ClearCollectionNum();
+            isOnFire = false;
+        }
+
+        // 可以发射火球
+        if (collider.tag == "Item")
+        {
+            isOnFire = true;
+            Destroy(collider.gameObject);
         }
     }
 
@@ -422,8 +432,7 @@ public class PlayerController : MonoBehaviour
     // 收集数清零
     void ClearCollectionNum()
     {
-        PlayerPrefs.SetInt("cherryCount", 0);
-        PlayerPrefs.SetInt("gemCount", 0);
+        
     }
 }
 

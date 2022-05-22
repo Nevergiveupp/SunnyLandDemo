@@ -246,6 +246,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+  passMenu: {fileID: 0}
+  isOnFire: 0
 --- !u!95 &5184137706825159031
 Animator:
   serializedVersion: 3

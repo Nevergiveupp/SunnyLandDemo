@@ -14,10 +14,10 @@ public class SceneMgr : MonoBehaviour
     }
 
     //传输数据
-    Dictionary<string, object> sceneOneshotData = null;
+    Dictionary<string, int> sceneOneshotData = null;
 
     //设置数据
-    private void WriteSceneData(Dictionary<string, object> data)
+    private void WriteSceneData(Dictionary<string, int> data)
     {
         if (sceneOneshotData != null)
         {
@@ -27,19 +27,19 @@ public class SceneMgr : MonoBehaviour
     }
 
     //取出数据
-    public Dictionary<string, object> ReadSceneData()
+    public Dictionary<string, int> ReadSceneData()
     {
-        Dictionary<string, object> tempData = sceneOneshotData;
+        Dictionary<string, int> tempData = sceneOneshotData;
         sceneOneshotData = null;//清空
         return tempData;
     }
 
     //前往新场景
-    public void ToNewScene(string sceneName, Dictionary<string, object> param = null)
+    public void ToNewScene(string sceneName, Dictionary<string, int> param = null)
     {
         //写入数据
         this.WriteSceneData(param);
-        //加载新场景
+        //加载下一个场景
         SceneManager.LoadScene(sceneName);
     }
 }

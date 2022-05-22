@@ -6,10 +6,12 @@ public class PrefabWeapon : MonoBehaviour {
 
 	public Transform firePoint;
 	public GameObject bulletPrefab;
+	public PlayerController pc;
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Fire1"))
+		Debug.Log("isOnFire=" + pc.isOnFire);
+		if (pc.isOnFire && Input.GetButtonDown("Fire1"))
 		{
 			Shoot();
 		}
