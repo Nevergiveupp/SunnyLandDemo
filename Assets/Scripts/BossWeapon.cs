@@ -13,6 +13,7 @@ public class BossWeapon : MonoBehaviour
 
 	public void Attack()
 	{
+		SoundManager.instance.SlashAudio();
 		Vector3 pos = transform.position;
 		pos += transform.right * attackOffset.x;
 		pos += transform.up * attackOffset.y;
@@ -26,6 +27,7 @@ public class BossWeapon : MonoBehaviour
 
 	public void EnragedAttack()
 	{
+		SoundManager.instance.SlashAudio();
 		Vector3 pos = transform.position;
 		pos += transform.right * attackOffset.x;
 		pos += transform.up * attackOffset.y;

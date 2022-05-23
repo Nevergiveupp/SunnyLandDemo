@@ -7,7 +7,8 @@ public class Cherry : MonoBehaviour
     public void Death()
     {
         // 调用PlayerController类中的樱桃计数方法
-        FindObjectOfType<PlayerController>().CherryCount();
+        StaticCount.cherryCount += 1;
+        //FindObjectOfType<PlayerController>().CherryCount();
         Destroy(this.gameObject);
     }
 }

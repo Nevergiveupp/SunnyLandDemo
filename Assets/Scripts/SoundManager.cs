@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSource;
 
     [SerializeField]
-    public AudioClip jumpAudio, hurtAudio, getItemAudio;
+    public AudioClip jumpAudio, hurtAudio, getItemAudio, fireAudio, slashAudio, enrageAudio, swordAudio;
 
     private void Awake()
     {
@@ -32,6 +32,30 @@ public class SoundManager : MonoBehaviour
     public void GetItemAudio()
     {
         audioSource.clip = getItemAudio;
+        audioSource.Play();
+    }
+
+    public void FireAudio()
+    {
+        audioSource.clip = fireAudio;
+        audioSource.Play();
+    }
+
+    public void SlashAudio()
+    {
+        audioSource.clip = slashAudio;
+        audioSource.Play();
+    }
+
+    public void EnrageAudio()
+    {
+        audioSource.clip = enrageAudio;
+        audioSource.Play();
+    }
+
+    public void SwordAudio()
+    {
+        audioSource.clip = swordAudio;
         audioSource.Play();
     }
 }

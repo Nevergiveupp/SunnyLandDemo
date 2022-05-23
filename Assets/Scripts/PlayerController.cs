@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     public int cherryCount, gemCount;
 
     [SerializeField]
-    private TMP_Text cherryNum, gemNum;
+    public TMP_Text cherryNum, gemNum, totalScore;
 
     // 人物是否受伤，默认false
     private bool isHurt;
@@ -81,10 +81,7 @@ public class PlayerController : MonoBehaviour
         Application.targetFrameRate = 60;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        // 从上一个场景继承收集数和血量
-        //Dictionary<string, int> param = SceneMgr.ins.ReadSceneData();
-        //cherryCount = param["cherryCount"];
-        //gemCount = param["gemCount"];
+        
         // 初始化血量
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -112,8 +109,8 @@ public class PlayerController : MonoBehaviour
         //Jump();
         // 角色下蹲
         Crouch();
-        cherryNum.text = cherryCount.ToString();
-        gemNum.text = gemCount.ToString();
+        cherryNum.text = StaticCount.cherryCount.ToString();
+        gemNum.text = StaticCount.gemCount.ToString();
         newJump();
     }
 
@@ -245,6 +242,7 @@ public class PlayerController : MonoBehaviour
         {
             // 禁用所有音源
             // this.GetComponent<AudioSource>().enabled = false;
+            ClearCollectionNum();
             // 延迟执行重置当前场景
             Invoke("Restart", 1f);
 
@@ -253,7 +251,7 @@ public class PlayerController : MonoBehaviour
         if (collider.tag == "Finish")
         {
             GamePass();
-            ClearCollectionNum();
+            
             isOnFire = false;
         }
 
@@ -404,6 +402,7 @@ public class PlayerController : MonoBehaviour
         // 死亡
         if(currentHealth <= 0)
         {
+            ClearCollectionNum();
             // 重置游戏
             Invoke("Restart", 1f);
         }
@@ -423,8 +422,11 @@ public class PlayerController : MonoBehaviour
 
     void GamePass()
     {
+        
         // 弹出通关对话框，时间停止
         passMenu.SetActive(true);
+        totalScore.text = (StaticCount.cherryCount * 10 + StaticCount.gemCount * 20).ToString();
+        Debug.Log("totalScore: " + totalScore.text);
         Time.timeScale = 0f;
 
     }
@@ -432,7 +434,8 @@ public class PlayerController : MonoBehaviour
     // 收集数清零
     void ClearCollectionNum()
     {
-        
+        StaticCount.cherryCount = 0;
+        StaticCount.gemCount = 0;
     }
 }
 

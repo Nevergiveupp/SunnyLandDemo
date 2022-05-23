@@ -53,6 +53,9 @@ public class Menu : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        // »ý·ÖÇåÁã
+        StaticCount.cherryCount = 0;
+        StaticCount.gemCount = 0;
         SceneManager.LoadScene(0);
 
     }

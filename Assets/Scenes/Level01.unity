@@ -184,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75993412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.428192, y: 5.959029, z: -10}
+  m_LocalPosition: {x: -32.428036, y: 5.959029, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 194610995}
@@ -1174,32 +1174,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279080893}
   m_CullTransparentMesh: 1
---- !u!1 &297142080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5184137706825159017, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
-  m_PrefabInstance: {fileID: 5184137708416554789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &297142083 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5184137706825159028, guid: d926126cbffa3f64083c4ab35f7c255a, type: 3}
   m_PrefabInstance: {fileID: 5184137708416554789}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297142080}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d64bb263851f6a43b4e8cf1b51ee174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &297142088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297142080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5d4efaabf345a45946bbc75ad8fcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &334692158 stripped
@@ -1935,7 +1918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.212498, y: 0.31803465, z: -10}
+  m_LocalPosition: {x: -23.197525, y: 0.31803513, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4252,49 +4235,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &698252852
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 698252854}
-  - component: {fileID: 698252853}
-  m_Layer: 0
-  m_Name: SceneMgr
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &698252853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698252852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5d4efaabf345a45946bbc75ad8fcb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &698252854
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698252852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.282088, y: 2.1327908, z: -44.627346}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &718279306
 GameObject:
   m_ObjectHideFlags: 0
@@ -15985,6 +15925,10 @@ MonoBehaviour:
   jumpAudio: {fileID: 8300000, guid: 6b49c26b106d92a4d977d8454d734c3c, type: 3}
   hurtAudio: {fileID: 8300000, guid: bee4874a94de90b4d838cafa4050c442, type: 3}
   getItemAudio: {fileID: 8300000, guid: e68a995f9a128d5449d957896e78a089, type: 3}
+  fireAudio: {fileID: 0}
+  slashAudio: {fileID: 0}
+  enrageAudio: {fileID: 0}
+  swordAudio: {fileID: 0}
 --- !u!82 &2106450563
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16105,9 +16049,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 253935cdef7a3ca4a841e0fc4af8ea25, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f6ac7b9d791627f459ff94d60d7a0229, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
