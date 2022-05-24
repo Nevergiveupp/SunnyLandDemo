@@ -17,7 +17,7 @@ public class PrefabWeapon : MonoBehaviour {
 		}
 	}
 
-	void Shoot ()
+	public void Shoot ()
 	{
 		SoundManager.instance.FireAudio();
 		Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

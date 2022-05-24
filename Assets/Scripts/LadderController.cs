@@ -16,6 +16,8 @@ public class LadderController : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
+    public Joystick joystick;
+
     void Start()
     {
         // 获取初始重力
@@ -26,6 +28,8 @@ public class LadderController : MonoBehaviour
     void Update()
     {
         vertical = Input.GetAxis("Vertical");//[-1, 1]
+        // 适配手机
+        vertical = vertical == 0 ? joystick.Vertical : vertical;
 
         // 角色接触梯子，且按下上或下键
         if (isLadder && Mathf.Abs(vertical) > 0f)

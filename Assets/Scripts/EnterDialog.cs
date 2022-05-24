@@ -6,11 +6,18 @@ public class EnterDialog : MonoBehaviour
 {
     public GameObject enterDialog;
 
+    public GameObject enterButton;
+
     // 当接触碰撞体调用
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            if (this.tag == "Door")
+            {
+                enterButton.SetActive(true);
+            }
+            
             enterDialog.SetActive(true);
         }
 
@@ -21,6 +28,10 @@ public class EnterDialog : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            if (this.tag == "Door")
+            {
+                enterButton.SetActive(false);
+            }
             enterDialog.SetActive(false);
         }
     }

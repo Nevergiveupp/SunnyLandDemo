@@ -74,6 +74,10 @@ public class PlayerController : MonoBehaviour
 
     public bool isOnFire = false;
 
+    public Joystick joystick;
+
+    public GameObject fireButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +116,7 @@ public class PlayerController : MonoBehaviour
         cherryNum.text = StaticCount.cherryCount.ToString();
         gemNum.text = StaticCount.gemCount.ToString();
         newJump();
+        
     }
 
     // 角色移动
@@ -119,8 +124,11 @@ public class PlayerController : MonoBehaviour
     {
         // 获取水平轴的值并存储在变量中
         float horizontalValue = Input.GetAxis("Horizontal");
+        // 尝试获取摇杆
+        horizontalValue = horizontalValue == 0 ? joystick.Horizontal : horizontalValue;// -1f~1f
         // 角色面朝方向
         float faceDirection = Input.GetAxisRaw("Horizontal");
+        faceDirection = faceDirection == 0 ? joystick.Horizontal : faceDirection;
 
         float move = horizontalValue * speed * Time.fixedDeltaTime;
 
@@ -259,6 +267,8 @@ public class PlayerController : MonoBehaviour
         if (collider.tag == "Item")
         {
             isOnFire = true;
+
+            fireButton.SetActive(true);
             Destroy(collider.gameObject);
         }
     }
@@ -313,9 +323,9 @@ public class PlayerController : MonoBehaviour
     // 下蹲
     void Crouch()
     {
-        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.5f, ground))
+        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.2f, ground))
         {
-            if (Input.GetButton("Crouch"))
+            if (Input.GetButton("Crouch") || joystick.Vertical < -0.5f)
             {
                 anim.SetBool("crouching", true);
                 headColl.enabled = false;
@@ -344,7 +354,7 @@ public class PlayerController : MonoBehaviour
     }*/
 
     // 优化跳跃手感
-    void newJump()
+    public void newJump()
     {
         if (isGround)
         {
@@ -437,6 +447,35 @@ public class PlayerController : MonoBehaviour
         StaticCount.cherryCount = 0;
         StaticCount.gemCount = 0;
     }
+
+    public void AndriodJump()
+    {
+        if (isGround)
+        {
+            // 二段跳，额外跳1次
+            extraJump = 1;
+        }
+        if (extraJump > 0)
+        {
+            // 向上跳
+            rb.velocity = Vector2.up * jumpForce;// new Vector2 (0, 1)
+            // 播放音效
+            //jumpAudio.Play();
+            // 额外跳跃量减一
+            extraJump--;
+            // 调用声音管理器中的跳跃音效
+            SoundManager.instance.JumpAudio();
+            anim.SetBool("jumping", true);
+        }
+        if (extraJump == 0 && isGround)
+        {
+            rb.velocity = Vector2.up * jumpForce;
+            // 调用声音管理器中的跳跃音效
+            SoundManager.instance.JumpAudio();
+            anim.SetBool("jumping", true);
+        }
+    }
+
 }
 
 

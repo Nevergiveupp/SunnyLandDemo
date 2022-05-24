@@ -185,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030621529, y: -0.024701595}
+  m_Offset: {x: 0.027095318, y: -0.09603286}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -196,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9608898, y: 0.77181435}
+  m_Size: {x: 0.8127947, y: 0.9144769}
   m_EdgeRadius: 0
 --- !u!58 &5184137706825159030
 CircleCollider2D:
@@ -211,9 +211,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.008774579, y: -0.5412767}
+  m_Offset: {x: -0.03345719, y: -0.55538106}
   serializedVersion: 2
-  m_Radius: 0.44467354
+  m_Radius: 0.43409526
 --- !u!114 &5184137706825159028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,11 +243,14 @@ MonoBehaviour:
   gemCount: 0
   cherryNum: {fileID: 0}
   gemNum: {fileID: 0}
+  totalScore: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
   passMenu: {fileID: 0}
   isOnFire: 0
+  joystick: {fileID: 0}
+  fireButton: {fileID: 0}
 --- !u!95 &5184137706825159031
 Animator:
   serializedVersion: 3
@@ -281,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5184137706825159018}
   anim: {fileID: 5184137706825159031}
+  joystick: {fileID: 0}
 --- !u!1 &7244032060786427995
 GameObject:
   m_ObjectHideFlags: 0
