@@ -1260,6 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterDialog: {fileID: 163340337}
+  enterButton: {fileID: 0}
 --- !u!61 &428987693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1587,10 +1588,10 @@ RectTransform:
   m_Father: {fileID: 142670682}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 356.20007, y: -171}
-  m_SizeDelta: {x: 102.0359, y: 61.3928}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -57.799927, y: 62}
+  m_SizeDelta: {x: 102.03589, y: 61.39279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456683697
 MonoBehaviour:
@@ -3533,10 +3534,10 @@ RectTransform:
   m_Father: {fileID: 142670682}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 356.20007, y: -94}
-  m_SizeDelta: {x: 102.0359, y: 61.3928}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -57.799927, y: 139}
+  m_SizeDelta: {x: 102.03589, y: 61.39279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058774165
 MonoBehaviour:
@@ -10625,11 +10626,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 960
+      value: 519.8687
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 645
+      value: 516.8866
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10661,11 +10662,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -89
+      value: 0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984436, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12307,6 +12308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterDialog: {fileID: 1238740765}
+  enterButton: {fileID: 0}
 --- !u!61 &1710065242
 BoxCollider2D:
   m_ObjectHideFlags: 0
