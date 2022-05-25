@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
     // об╤в
     void Crouch()
     {
-        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.2f, ground))
+        if (!Physics2D.OverlapCircle(cellingCheck.position, 0.5f, ground))
         {
             if (Input.GetButton("Crouch") || joystick.Vertical < -0.5f)
             {
